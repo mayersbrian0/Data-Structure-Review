@@ -15,7 +15,22 @@ template<typename T> LinkedList<T>::~LinkedList() {
     }
 }
 
-template<typename T> int LinkedList<T>::get_size() {
+template<typename T> LinkedList<T> LinkedList<T>::operator+(LinkedList<T> const &obj) {
+    int size1 = get_size();
+    int size2 = obj.get_size();
+    LinkedList<T> new_list;
+    int i = 0, j = 0;
+
+    while (head && j < size2) {
+        new_list.push_back(value_at(i) + obj.value_at(j));
+        i++;
+        j++;
+    }
+
+    return new_list;
+}
+
+template<typename T> int LinkedList<T>::get_size() const {
     return size;
 }
 
@@ -23,7 +38,7 @@ template<typename T> bool LinkedList<T>::empty() {
     return size == 0;
 }
 
-template<typename T> T LinkedList<T>::value_at(unsigned int index) {
+template<typename T>  T LinkedList<T>::value_at(unsigned int index) const {
     if (head == NULL || index >= size) {
         std::cout << "Empty List or Invalid Index\n";
         return -1;
@@ -69,6 +84,7 @@ template<typename T> void LinkedList<T>::push_back(T value) {
     if (head == NULL) {
         head = new_node;
         size++;
+        return;
     }
 
     while (temp->next != NULL) temp = temp->next;

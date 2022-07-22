@@ -122,7 +122,6 @@ template<typename T> bool Tree<T>::is_bst() {
     return is_bst_helper(root, LONG_MIN, LONG_MAX);
 }
 
-
 template<typename T> TreeNode<T>* get_leftmost(TreeNode<T>* root) {
     TreeNode<T>* temp = root;
     while (temp && temp->left != NULL) temp = temp->left;

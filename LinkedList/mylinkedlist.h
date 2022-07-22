@@ -14,10 +14,12 @@ template<typename T> class LinkedList {
     public:
     LinkedList();
     ~LinkedList();
+    //LinkedList(const LinkedList&); //copy constructor
 
-    int get_size();
+    LinkedList operator +(LinkedList const &obj);
+    int get_size() const;
     bool empty();
-    T value_at(unsigned int index);
+    T value_at(unsigned int index) const;
     void push_front(T value);
     T pop_front();
     void push_back(T value);
